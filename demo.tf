@@ -1,6 +1,12 @@
 provider "aws" {
   region     = "eu-west-3"
-
+  //set same region in aws cli
+  //access_key = ""
+  //secret_key = ""
+  //used >  export AWS_SECRET_ACCESS_KEY=........
+  //                                               > for local usage within one terminal
+  //used >  export AWS_ACCESS_KEY_ID=............      
+  //used >  amazon cli > aws config to set these values (for global usage within any terminal)
 }
 
 resource "aws_vpc" "main" {
@@ -31,4 +37,16 @@ resource "aws_subnet" "subnet2"{
     Name = "subnet2"
   }
 
+}
+
+output "vpc_1_id" {
+
+  value = aws_vpc.main.id
+  
+}
+
+output "subnet_1_id" {
+
+  value = aws_subnet.subnet1.id
+  
 }
